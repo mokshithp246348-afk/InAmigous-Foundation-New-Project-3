@@ -57,12 +57,12 @@ export default function HeroSection({ onOpenVolunteer, onOpenSupport, onNavigate
     return () => clearInterval(timer);
   }, []);
 
-  // Moving Images Slideshow Timer (fast 1.0s slide transition)
+  // Moving Images Slideshow Timer (2.0s slide transition)
   useEffect(() => {
     if (isPaused) return;
     const slideTimer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 1000);
+    }, 2000);
     return () => clearInterval(slideTimer);
   }, [isPaused, slides.length]);
 
