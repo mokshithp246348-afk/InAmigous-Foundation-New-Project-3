@@ -1,0 +1,234 @@
+:root {
+  --bg-canvas: #071512;
+  --bg-card: rgba(14, 28, 25, 0.75);
+  --bg-card-hover: rgba(22, 44, 39, 0.85);
+  --emerald-primary: #1B4332;
+  --emerald-light: #2D6A4F;
+  --emerald-accent: #52B788;
+  --emerald-glow: #74C69D;
+  --terracotta: #E07A5F;
+  --terracotta-hover: #F4A261;
+  --text-main: #FFFFFF;
+  --text-muted: #CBD5E0;
+  --border-glass: rgba(82, 183, 136, 0.22);
+  --border-emerald: rgba(82, 183, 136, 0.45);
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background-color: transparent;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #040908;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--emerald-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--emerald-accent);
+}
+
+/* Typography & Display Headers */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Glassmorphism Cards */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), 0 0 20px rgba(82, 183, 136, 0.08);
+  border-radius: 20px;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--border-emerald);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45), 0 0 25px rgba(82, 183, 136, 0.18);
+}
+
+/* Text Gradients & Accents */
+.text-gradient {
+  background: linear-gradient(135deg, #74C69D 0%, #F4A261 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #E07A5F 0%, #D05B3F 100%);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 13px 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(224, 122, 95, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(224, 122, 95, 0.6);
+  background: linear-gradient(135deg, #F4A261 0%, #E07A5F 100%);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 13px 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(82, 183, 136, 0.2);
+  border-color: var(--emerald-accent);
+  transform: translateY(-2px);
+  color: #ffffff;
+}
+
+/* Canvas Container */
+#canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Pulse Animation */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 5s infinite ease-in-out;
+}
+
+/* Subtle Cinematic Ken Burns effect for background NGO photo */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1.1) translate(-1%, -0.5%);
+  }
+}
+
+.ken-burns-bg {
+  animation: kenBurns 35s ease-in-out infinite alternate;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 9, 8, 0.82);
+  backdrop-filter: blur(14px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards ease;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: #0E1D1A;
+  border: 1px solid var(--border-emerald);
+  border-radius: 24px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6), 0 0 40px rgba(82, 183, 136, 0.2);
+  padding: 36px;
+  position: relative;
+  transform: scale(0.95);
+  animation: popIn 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  to { transform: scale(1); }
+}
+
+/* Badges */
+.badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-block;
+}
+
+.badge-emerald {
+  background: rgba(82, 183, 136, 0.15);
+  color: #74C69D;
+  border: 1px solid rgba(82, 183, 136, 0.35);
+}
+
+.badge-terracotta {
+  background: rgba(224, 122, 95, 0.15);
+  color: #F4A261;
+  border: 1px solid rgba(224, 122, 95, 0.4);
+}
